@@ -42,10 +42,12 @@ async function countStudents(filePath) {
 }
 
 app.get('/', (req, res) => {
+  res.set('Content-Type', 'text/plain');
   res.send('Hello Holberton School!');
 });
 
 app.get('/students', async (req, res) => {
+  res.set('Content-Type', 'text/plain');
   try {
     const studentData = await countStudents(databaseFile);
     res.end(studentData);
