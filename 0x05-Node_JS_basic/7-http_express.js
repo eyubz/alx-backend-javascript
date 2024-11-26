@@ -1,4 +1,9 @@
+const express = require('express');
 const fs = require('fs').promises;
+
+const app = express();
+
+const databaseFile = process.argv[2];
 
 async function countStudents(filePath) {
   try {
@@ -6,12 +11,11 @@ async function countStudents(filePath) {
     const lines = data.trim().split('\n');
 
     if (lines.length <= 1) {
-      console.log('Number of students: 0');
-      return;
+      return 'Number of students: 0';
     }
 
     const students = lines.slice(1).map((line) => line.split(','));
-    console.log(`Number of students: ${students.length}`);
+    let result = `Number of students: ${students.length}\n`;
 
     const fields = {};
     for (const student of students) {
@@ -25,14 +29,31 @@ async function countStudents(filePath) {
 
     for (const [field, names] of Object.entries(fields)) {
       const cleanedField = field.trim();
-      const data = `Number of students in ${cleanedField}: ${
+      result += `Number of students in ${cleanedField}: ${
         names.length
-      }. List: ${names.join(', ')}`;
-      console.log(data);
+      }. List: ${names.join(', ')}\n`;
     }
+
+    return result.trim();
   } catch (error) {
+    console.log(error);
     throw new Error('Cannot load the database');
   }
 }
 
-module.exports = countStudents;
+app.get('/', (req, res) => {
+  res.send('Hello Holberton School!');
+});
+
+app.get('/students', async (req, res) => {
+  try {
+    const studentData = await countStudents(databaseFile);
+    res.end(studentData);
+  } catch (err) {
+    console.error(err);
+    res.end('Cannot load the database');
+  }
+});
+app.listen(1245);
+
+module.exports = app;
