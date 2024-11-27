@@ -54,7 +54,7 @@ app.get('/students', async (req, res) => {
     res.end(studentData);
   } catch (err) {
     console.error(err);
-    res.end('Cannot load the database');
+    res.status(500).end('Cannot load the database');
   }
 });
 app.listen(1245);
