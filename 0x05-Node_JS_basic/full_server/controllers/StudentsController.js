@@ -6,7 +6,9 @@ class StudentsController {
     try {
       const studentsByField = await readDatabase(process.argv[2]);
       let result = 'This is the list of our students\n';
-      const sortedFields = Object.keys(studentsByField).sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+      const sortedFields = Object.keys(studentsByField).sort((a, b) =>
+        a.toLowerCase().localeCompare(b.toLowerCase())
+      );
 
       for (const field of sortedFields) {
         const studentNames = studentsByField[field];
