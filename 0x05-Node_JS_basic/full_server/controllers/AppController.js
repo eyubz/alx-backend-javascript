@@ -1,7 +1,7 @@
 class AppController {
-  static getHomePage(req, res) {
-    res.status(200).send("Hello Holberton School!");
+  static getHomePage(_, response) {
+    response.status(200).send('Hello Holberton School!');
   }
 }
 
-module.exports = AppController;
+export default AppController;
