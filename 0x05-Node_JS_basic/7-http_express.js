@@ -15,7 +15,8 @@ async function countStudents(filePath) {
     }
 
     const students = lines.slice(1).map((line) => line.split(','));
-    let result = `Number of students: ${students.length}\n`;
+    let result = 'This is the list of our students\n';
+    result += `Number of students: ${students.length}\n`;
 
     const fields = {};
     for (const student of students) {
