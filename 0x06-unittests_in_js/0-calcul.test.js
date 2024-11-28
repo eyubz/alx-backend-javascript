@@ -22,4 +22,16 @@ describe("calculateNumber", function () {
   it("should return 1", function () {
     assert.strictEqual(calculateNumber(0, 0.8), 1);
   });
+  it("should return Nan", function () {
+    assert.strictEqual(calculateNumber("hi", "bye"), NaN);
+  });
+  it("should return Nan", function () {
+    assert.strictEqual(calculateNumber([], {}), NaN);
+  });
+  it("should return Nan", function () {
+    assert.strictEqual(calculateNumber("hi", 2), NaN);
+  });
+  it("should return Nan", function () {
+    assert.strictEqual(calculateNumber(2, "hi"), NaN);
+  });
 });
