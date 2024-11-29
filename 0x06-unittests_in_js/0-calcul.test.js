@@ -22,6 +22,9 @@ describe("calculateNumber", function () {
   it("should return 1", function () {
     assert.strictEqual(calculateNumber(0, 0.8), 1);
   });
+  it("should return 3", function () {
+    assert.strictEqual(calculateNumber(2, 0.8), 3);
+  });
   it("should return Nan", function () {
     assert.strictEqual(calculateNumber("hi", "bye"), NaN);
   });
