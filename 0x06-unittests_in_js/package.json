@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "0x06-unittests_in_js": "file:",
     "mocha": "^10.8.2"
   }
 }
