@@ -10,7 +10,8 @@
   "description": "",
   "dependencies": {
     "0x06-unittests_in_js": "file:",
-    "mocha": "^10.8.2"
+    "mocha": "^10.8.2",
+    "sinon": "^19.0.2"
   },
   "devDependencies": {
     "chai": "^5.1.2"
